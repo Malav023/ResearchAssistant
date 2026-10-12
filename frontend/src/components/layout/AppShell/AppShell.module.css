@@ -1,0 +1,95 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.headerLeft,
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--color-text);
+}
+.iconBtn:hover {
+  border-color: var(--color-accent);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.userName {
+  font-size: 13.5px;
+  color: var(--color-muted);
+}
+
+.logoutBtn {
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+.logoutBtn:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.main {
+  flex: 1;
+  transition: margin-left 0.25s ease, filter 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainDimmed {
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+/* On desktop, an open sidebar pushes the main content over so the
+   chat bar/results stay centered in the remaining space instead of
+   being covered. On mobile the sidebar overlays instead (see Sidebar.module.css). */
+@media (min-width: 900px) {
+  .mainShifted {
+    margin-left: var(--sidebar-width);
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0 var(--space-3);
+  }
+  .userName {
+    display: none;
+  }
+}

@@ -1,0 +1,152 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.title {
+  margin: 2px 0 0;
+  font-size: 17px;
+  color: var(--color-text);
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.closeBtn:hover {
+  background: var(--color-bg);
+}
+
+.body {
+  flex: 1;
+  min-height: 420px;
+  display: flex;
+}
+
+.state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.error {
+  color: var(--color-danger);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.canvasArea {
+  position: relative;
+  flex: 1;
+}
+
+.detail {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.detailTitle {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.detailMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.legend {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.legendLineCitation,
+.legendLineRelated {
+  width: 16px;
+  height: 2px;
+  display: inline-block;
+}
+.legendLineCitation {
+  background: var(--color-accent);
+}
+.legendLineRelated {
+  background: repeating-linear-gradient(
+    to right,
+    var(--color-muted) 0,
+    var(--color-muted) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+@media (max-width: 640px) {
+  .body {
+    min-height: 320px;
+  }
+  .legend {
+    top: auto;
+    bottom: var(--space-4);
+    right: var(--space-3);
+  }
+}

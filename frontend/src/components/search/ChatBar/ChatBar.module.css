@@ -1,0 +1,90 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  padding: 6px 6px 6px 24px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.bar:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft), var(--shadow-md);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--color-text);
+  height: 40px;
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.submit {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-accent);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+
+.submit:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.submit:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.submit:disabled {
+  background: var(--color-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .bar {
+    padding: 5px 5px 5px 18px;
+  }
+  .input {
+    font-size: 15px;
+  }
+  .submit {
+    width: 40px;
+    height: 40px;
+  }
+}

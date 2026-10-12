@@ -1,0 +1,115 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.closed {
+  transform: translateX(-100%);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.closeBtn {
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+}
+.closeBtn:hover {
+  background: var(--color-bg);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.item:hover {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+.itemQuery {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.itemDate {
+  font-size: 11.5px;
+  color: var(--color-muted);
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  z-index: 55;
+}
+
+@media (min-width: 900px) {
+  .scrim {
+    display: none;
+  }
+  /* On desktop the sidebar pushes content rather than overlaying it;
+     AppShell reads sidebarOpen to add matching margin-left. */
+  .sidebar {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .sidebar {
+    box-shadow: var(--shadow-lg);
+  }
+}

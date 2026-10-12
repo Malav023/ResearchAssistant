@@ -1,0 +1,39 @@
+:root {
+  /* 60-30-10 color system */
+  --color-bg: #F8F9FA;           /* 60% - primary background, off-white */
+  --color-surface: #FFFFFF;       /* elevated bento cells on top of bg */
+  --color-text: #0A192F;          /* 30% - deep navy, primary text */
+  --color-muted: #8892B0;         /* supporting UI / secondary text */
+  --color-accent: #0070F3;        /* 10% - vibrant blue, CTAs/links */
+  --color-accent-soft: rgba(0, 112, 243, 0.08);
+  --color-accent-soft-strong: rgba(0, 112, 243, 0.16);
+  --color-border: rgba(10, 25, 47, 0.08);
+  --color-overlay: rgba(10, 25, 47, 0.35);
+
+  --color-danger: #E5484D;
+  --color-danger-soft: rgba(229, 72, 77, 0.08);
+
+  /* Radii — bento cells are highly rounded, touch-friendly */
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 9999px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --shadow-sm: 0 1px 3px rgba(10, 25, 47, 0.06), 0 1px 2px rgba(10, 25, 47, 0.04);
+  --shadow-md: 0 8px 24px rgba(10, 25, 47, 0.08);
+  --shadow-lg: 0 16px 48px rgba(10, 25, 47, 0.14);
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --sidebar-width: 280px;
+  --header-height: 64px;
+}

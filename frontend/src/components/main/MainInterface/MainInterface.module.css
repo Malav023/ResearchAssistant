@@ -1,0 +1,26 @@
+.centerCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-4) var(--space-7);
+  transition: justify-content 0.2s ease, padding-top 0.2s ease;
+}
+
+/* Once results exist, the whole column shifts toward the top instead of
+   staying vertically centered, so the chat bar + results read naturally
+   as a page rather than floating mid-screen. */
+.centerColTop {
+  justify-content: flex-start;
+  padding-top: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .centerCol {
+    padding: var(--space-4) var(--space-3) var(--space-6);
+  }
+  .centerColTop {
+    padding-top: var(--space-4);
+  }
+}

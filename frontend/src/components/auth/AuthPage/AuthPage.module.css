@@ -1,0 +1,39 @@
+.wrap {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5) var(--space-4);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.tabs {
+  display: flex;
+  background: var(--color-bg);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  margin-bottom: var(--space-5);
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tabActive {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
