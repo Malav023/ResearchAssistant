@@ -1,9 +1,0 @@
-# Serving environment. Ranges are deliberately loose; after a clean-venv install that passes
-# the tests, run `pip freeze > requirements.lock.txt` and deploy from the lock file.
-fastapi>=0.110,<1.0
-uvicorn[standard]>=0.29
-redis>=5.0,<7            # redis.asyncio is built in; do NOT also install aioredis
-numpy>=1.26,<3
-# transformers>=4.48 is required by ModernBERT (classifier). sentence-transformers pulls
-# torch + transformers; install the CPU torch wheel FIRST on CPU hosts.
-sentence-transformers>=3.0,<6
