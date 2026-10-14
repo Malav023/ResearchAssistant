@@ -1,9 +1,12 @@
+# Product API (runs without any ML packages; use ML_BACKEND=stub or remote)
 fastapi
 uvicorn
 httpx
 python-dotenv
 motor
-passlib[bcrypt]
 python-jose[cryptography]
+bcrypt
 email-validator
 pydantic
+redis>=5.0,<7
+numpy>=1.26,<3

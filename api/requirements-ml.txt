@@ -1,0 +1,7 @@
+# Only for ML_BACKEND=local / EMBED_BACKEND=local (everything in one process).
+# With the Colab model server you do NOT need this file on the API machine.
+# Install the CPU torch wheel first:  pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.48
+sentence-transformers>=3.0,<6
+huggingface_hub
+llama-cpp-python

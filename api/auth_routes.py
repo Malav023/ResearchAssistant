@@ -1,23 +1,25 @@
-from fastapi import APIRouter, HTTPException, Request, Response, Depends
 from bson import ObjectId
+from bson.errors import InvalidId
+from fastapi import APIRouter, Depends, HTTPException, Request, Response
 
-from db import users_collection
 from auth_utils import (
-    hash_password,
-    verify_password,
-    create_access_token,
-    decode_access_token,
     COOKIE_NAME,
     JWT_EXPIRE_MINUTES,
+    create_access_token,
+    decode_access_token,
+    hash_password,
+    verify_password,
 )
-from models import RegisterRequest, LoginRequest, TopicsRequest, UserOut
+from config import get_config
+from db import users_collection
+from models import LoginRequest, RegisterRequest, TopicsRequest, UserOut
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 
 COOKIE_KWARGS = dict(
     httponly=True,
     samesite="lax",
-    secure=False,  # set True once served over HTTPS
+    secure=get_config().cookie_secure,  # COOKIE_SECURE=true once served over HTTPS
     max_age=JWT_EXPIRE_MINUTES * 60,
     path="/",
 )
@@ -39,7 +41,11 @@ async def get_current_user(request: Request) -> dict:
     payload = decode_access_token(token)
     if not payload:
         raise HTTPException(status_code=401, detail="Invalid or expired session")
-    doc = await users_collection().find_one({"_id": ObjectId(payload["sub"])})
+    try:
+        oid = ObjectId(payload["sub"])
+    except (InvalidId, KeyError, TypeError):
+        raise HTTPException(status_code=401, detail="Invalid session")
+    doc = await users_collection().find_one({"_id": oid})
     if not doc:
         raise HTTPException(status_code=401, detail="User not found")
     return doc
@@ -89,8 +95,6 @@ async def me(user=Depends(get_current_user)):
 
 @router.post("/topics", response_model=UserOut)
 async def set_topics(body: TopicsRequest, user=Depends(get_current_user)):
-    await users_collection().update_one(
-        {"_id": user["_id"]}, {"$set": {"topics": body.topics}}
-    )
+    await users_collection().update_one({"_id": user["_id"]}, {"$set": {"topics": body.topics}})
     user["topics"] = body.topics
     return _user_out(user)
